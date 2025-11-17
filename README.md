@@ -1,5 +1,10 @@
 # 🏨 Hostel Management System (HMS)
 
+<img width="1920" height="1020" alt="Screenshot 2025-11-17 222817" src="https://github.com/user-attachments/assets/f1d8de04-6591-41e1-976c-9006af8509e4" />
+<img width="1920" height="1020" alt="Screenshot 2025-11-17 223339" src="https://github.com/user-attachments/assets/b118cc46-d860-431d-8d86-d0e81bab9a4f" />
+
+
+
 <div align="center">
 
 ![HMS Banner](https://img.shields.io/badge/HMS-Hostel_Management_System-blue?style=for-the-badge)
@@ -701,3 +706,6 @@ If you encounter any issues or have questions:
 Made with ❤️ by Sandythedev11
 
 </div>
+
+
+
