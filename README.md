@@ -1,6 +1,11 @@
 # 🏨 Hostel Management System (HMS)
 
 <img width="1920" height="1020" alt="Screenshot 2025-11-17 222817" src="https://github.com/user-attachments/assets/f1d8de04-6591-41e1-976c-9006af8509e4" />
+<img width="1920" height="1020" alt="Screenshot 2025-11-17 222904" src="https://github.com/user-attachments/assets/bf21ef8a-34c2-4891-9fe6-c615b0f263bb" />
+<img width="1920" height="1020" alt="Screenshot 2025-11-17 222921" src="https://github.com/user-attachments/assets/ec187a1e-0c4e-4943-b746-177d8cc534b2" />
+<img width="1920" height="1020" alt="Screenshot 2025-11-17 223100" src="https://github.com/user-attachments/assets/19c094b0-be3e-48bd-99c0-369b95d022d7" />
+<img width="1920" height="1020" alt="Screenshot 2025-11-17 223120" src="https://github.com/user-attachments/assets/63b534e5-c209-43df-8e40-2f04daef3478" />
+<img width="1920" height="1020" alt="Screenshot 2025-11-17 223328" src="https://github.com/user-attachments/assets/342f674d-ac74-4de1-a05f-e42f9c356fd0" />
 <img width="1920" height="1020" alt="Screenshot 2025-11-17 223339" src="https://github.com/user-attachments/assets/b118cc46-d860-431d-8d86-d0e81bab9a4f" />
 
 
