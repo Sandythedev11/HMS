@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HMS Favicon Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .upload-area {
+            border: 3px dashed rgba(255, 255, 255, 0.5);
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .upload-area:hover {
+            border-color: white;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        input[type="file"] {
+            display: none;
+        }
+        .preview {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .preview-item {
+            text-align: center;
+            margin: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        .preview-item canvas {
+            border: 2px solid white;
+            border-radius: 4px;
+            background: white;
+        }
+        button {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        .instructions {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        .instructions ol {
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏨 HMS Favicon Generator</h1>
+        
+        <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+            <h2>📁 Click to Upload HMS Logo</h2>
+            <p>Upload your HMS logo image (PNG, JPG, or SVG)</p>
+            <input type="file" id="fileInput" accept="image/*">
+        </div>
+
+        <div id="preview" class="preview" style="display: none;">
+            <div class="preview-item">
+                <h3>16x16</h3>
+                <canvas id="canvas16" width="16" height="16"></canvas>
+                <br>
+                <button onclick="downloadCanvas('canvas16', 'favicon-16x16.png')">Download</button>
+            </div>
+            <div class="preview-item">
+                <h3>32x32</h3>
+                <canvas id="canvas32" width="32" height="32"></canvas>
+                <br>
+                <button onclick="downloadCanvas('canvas32', 'favicon-32x32.png')">Download</button>
+            </div>
+            <div class="preview-item">
+                <h3>180x180 (Apple)</h3>
+                <canvas id="canvas180" width="180" height="180"></canvas>
+                <br>
+                <button onclick="downloadCanvas('canvas180', 'apple-touch-icon.png')">Download</button>
+            </div>
+        </div>
+
+        <div class="instructions">
+            <h3>📝 Instructions:</h3>
+            <ol>
+                <li>Upload your HMS logo image above</li>
+                <li>Preview the generated favicons</li>
+                <li>Download each size by clicking the buttons</li>
+                <li>Place the downloaded files in the <code>frontend/public/</code> folder</li>
+                <li>Restart your dev server to see the new favicon</li>
+            </ol>
+            <p><strong>Alternative:</strong> Use <a href="https://realfavicongenerator.net/" target="_blank" style="color: #FFD700;">RealFaviconGenerator.net</a> for more formats</p>
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('fileInput');
+        const preview = document.getElementById('preview');
+
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                const img = new Image();
+                img.onload = function() {
+                    generateFavicons(img);
+                    preview.style.display = 'flex';
+                };
+                img.src = event.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
+
+        function generateFavicons(img) {
+            const sizes = [
+                { id: 'canvas16', size: 16 },
+                { id: 'canvas32', size: 32 },
+                { id: 'canvas180', size: 180 }
+            ];
+
+            sizes.forEach(({ id, size }) => {
+                const canvas = document.getElementById(id);
+                const ctx = canvas.getContext('2d');
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                ctx.drawImage(img, 0, 0, size, size);
+            });
+        }
+
+        function downloadCanvas(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+    </script>
+</body>
+</html>
