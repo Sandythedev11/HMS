@@ -43,11 +43,11 @@ const queryClient = new QueryClient();
 function LayoutWithSidebar({ isAdmin = false, children }: { isAdmin?: boolean; children: React.ReactNode }) {
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen w-full">
+      <div className="flex min-h-screen w-full bg-gray-50 dark:bg-gray-950 transition-colors duration-300">
         <AppSidebar isAdmin={isAdmin} />
         <div className="flex-1 flex flex-col">
           <AppHeader />
-        <main className="flex-1 bg-gradient-to-br from-white via-blue-50 to-purple-50 p-6 animate-fade-in">
+        <main className="flex-1 bg-gradient-to-br from-white via-blue-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-slate-900 p-6 animate-fade-in transition-colors duration-300">
           {children}
         </main>
         </div>
